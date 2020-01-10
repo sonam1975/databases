@@ -15,19 +15,19 @@ module.exports = router;
 
 
 
-app.get('/background', (req, res) => {
-  models.get()
-  fs.readFile('./background.jpg');
-  res.end(data);
-});
+// app.get('/background', (req, res) => {
+//   models.get()
+//   fs.readFile('./background.jpg');
+//   res.end(data);
+// });
 
-const callback = (req, res) {
-  fs.readFile('./background.jpg');
-  res.end(data);
-}
+// const callback = (req, res) {
+//   fs.readFile('./background.jpg');
+//   res.end(data);
+// }
 
-app.get('/swimmers/background', callback)
+// app.get('/swimmers/background', callback)
 
-app.use('/swimmers', swimRouter);
+// app.use('/swimmers', swimRouter);
 
-router.get('/background', callback)
+// router.get('/background', callback)

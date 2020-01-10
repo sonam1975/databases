@@ -1,29 +1,29 @@
 var db = require('../db');
 
+
 module.exports = {
   messages: {
-    get: function () {
-      db.con.connect((err, query) => {
+    get: function (callback) {
+      db.connect((err, query) => {
         if (err) {
           throw 'err';
         } else {
           console.log('connected!');
-          con.query("SELECT * FROM messages", function (err, result, fields) {
-            // con.query(query, function (err, result, fields) {
-            //   if (err) { throw err; }
+          db.query("SELECT * FROM messages", function (err, result, fields) {
             console.log(result);
+            callback(result);
           });
         }
       });
     }, // a function which produces all the messages
     post: function () {
-      db.con.connect((err, message) => {
+      db.connect((err, message) => {
         if (err) {
           throw 'err';
         } else {
           console.log('connected!');
           var sql = "INSERT INTO messages (RoomId, UserId, MsgTime) VALUES (1,2,'test')";
-          con.query(sql, function (err, result, fields) {
+          db.query(sql, function (err, result, fields) {
             // con.query(query, function (err, result, fields) {
             //   if (err) { throw err; }
             console.log(result);
@@ -38,12 +38,12 @@ module.exports = {
   users: {
     // Ditto as above.
     get: function () {
-      db.con.connect((err, query) => {
+      db.connect((err, query) => {
         if (err) {
           throw 'err';
         } else {
           console.log('connected!');
-          con.query("SELECT * FROM usernames", function (err, result, fields) {
+          db.query("SELECT * FROM usernames", function (err, result, fields) {
             // con.query(query, function (err, result, fields) {
             //   if (err) { throw err; }
             console.log(result);
@@ -52,13 +52,13 @@ module.exports = {
       });
     },
     post: function () {
-      db.con.connect((err, message) => {
+      db.connect((err, message) => {
         if (err) {
           throw 'err';
         } else {
           console.log('connected!');
           var sql = "INSERT INTO usernames (username) VALUES ('test')";
-          con.query(sql, function (err, result, fields) {
+          db.query(sql, function (err, result, fields) {
             // con.query(query, function (err, result, fields) {
             //   if (err) { throw err; }
             console.log(result);
@@ -69,4 +69,6 @@ module.exports = {
     }
   }
 };
+
+module.exports.messages.get();
 

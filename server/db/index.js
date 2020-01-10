@@ -13,15 +13,15 @@ var con = mysql.createConnection({
 
 // module.exports.con.connect(callback);
 
-module.exports.con.connect((err, query) => {
-  if (err) {
-    throw 'err';
-  } else {
-    console.log('connected!');
-    con.query("SELECT * FROM messages", function (err, result, fields) {
-    // con.query(query, function (err, result, fields) {
-    //   if (err) { throw err; }
-      console.log(result);
-    });
-  }
-});
+// con.connect((err, query) => {
+//   if (err) {
+//     throw 'err';
+//   } else {
+//     console.log('connected!');
+//     con.query("SELECT * FROM messages", function (err, result, fields) {
+//       console.log(result);
+//     });
+//   }
+// });
+
+module.exports = con;
